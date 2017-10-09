@@ -1,8 +1,9 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
-
+import { HeroDetailComponent } from './hero-detail.component';
 import { AppComponent }  from './app.component';
+import {HeroService} from "./hero.service";
 
 @NgModule({
     imports: [
@@ -10,8 +11,10 @@ import { AppComponent }  from './app.component';
         FormsModule // <-- import the FormsModule before binding with [(ngModel)]
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        HeroDetailComponent
     ],
+    providers: [HeroService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
