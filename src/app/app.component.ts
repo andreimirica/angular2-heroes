@@ -69,10 +69,6 @@ export class AppComponent implements OnInit{
     title = 'Tour of Heroes';
     heroes: Hero[];
     selectedHero: Hero;
-    hero: Hero = {
-        id: 1,
-        name: 'Windstorm'
-    };
     onSelect(hero: Hero): void {
         this.selectedHero = hero;
     }
