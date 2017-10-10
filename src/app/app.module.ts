@@ -7,6 +7,10 @@ import {HeroService} from "./hero.service";
 import {HeroesComponent} from "./heroes.component";
 import { RouterModule, Routes }   from '@angular/router';
 import {DashboardComponent} from "./dashboard.component";
+import {HttpModule} from "@angular/http";
+import {InMemoryDataService} from "./in-memory-data.service";
+import {HeroSearchComponent} from "./hero-search.component";
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 const routes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -19,15 +23,18 @@ const routes: Routes = [
     imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
-        FormsModule // <-- import the FormsModule before binding with [(ngModel)]
+        FormsModule,
+        HttpModule,
+        InMemoryWebApiModule.forRoot(InMemoryDataService)
     ],
     declarations: [
         AppComponent,
         HeroDetailComponent,
         HeroesComponent,
-        DashboardComponent
+        DashboardComponent,
+        HeroSearchComponent
     ],
-    providers: [HeroService],
+    providers: [HeroService, InMemoryDataService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

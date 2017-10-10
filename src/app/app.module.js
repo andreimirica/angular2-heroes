@@ -15,6 +15,10 @@ var hero_service_1 = require("./hero.service");
 var heroes_component_1 = require("./heroes.component");
 var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./dashboard.component");
+var http_1 = require("@angular/http");
+var in_memory_data_service_1 = require("./in-memory-data.service");
+var hero_search_component_1 = require("./hero-search.component");
+var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
 var routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
@@ -31,15 +35,18 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             router_1.RouterModule.forRoot(routes),
-            forms_1.FormsModule // <-- import the FormsModule before binding with [(ngModel)]
+            forms_1.FormsModule,
+            http_1.HttpModule,
+            angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService)
         ],
         declarations: [
             app_component_1.AppComponent,
             hero_detail_component_1.HeroDetailComponent,
             heroes_component_1.HeroesComponent,
-            dashboard_component_1.DashboardComponent
+            dashboard_component_1.DashboardComponent,
+            hero_search_component_1.HeroSearchComponent
         ],
-        providers: [hero_service_1.HeroService],
+        providers: [hero_service_1.HeroService, in_memory_data_service_1.InMemoryDataService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
