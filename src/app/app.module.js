@@ -12,6 +12,15 @@ var forms_1 = require("@angular/forms"); // <-- NgModel lives here
 var hero_detail_component_1 = require("./hero-detail.component");
 var app_component_1 = require("./app.component");
 var hero_service_1 = require("./hero.service");
+var heroes_component_1 = require("./heroes.component");
+var router_1 = require("@angular/router");
+var dashboard_component_1 = require("./dashboard.component");
+var routes = [
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
+    { path: 'detail/:id', component: hero_detail_component_1.HeroDetailComponent },
+    { path: 'heroes', component: heroes_component_1.HeroesComponent }
+];
 var AppModule = (function () {
     function AppModule() {
     }
@@ -21,11 +30,14 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
+            router_1.RouterModule.forRoot(routes),
             forms_1.FormsModule // <-- import the FormsModule before binding with [(ngModel)]
         ],
         declarations: [
             app_component_1.AppComponent,
-            hero_detail_component_1.HeroDetailComponent
+            hero_detail_component_1.HeroDetailComponent,
+            heroes_component_1.HeroesComponent,
+            dashboard_component_1.DashboardComponent
         ],
         providers: [hero_service_1.HeroService],
         bootstrap: [app_component_1.AppComponent]
